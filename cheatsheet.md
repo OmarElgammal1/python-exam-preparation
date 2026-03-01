@@ -32,48 +32,6 @@ with open('employees.csv', mode='r') as file:
        print(f"Employee Name: {row[0]}, Department: {row[1]}")
 
 
-## 2. Object-Oriented Programming (OOP)
-
-### Defining a Class
-
-```
-class Dog:
-    # Class Attribute (shared by all instances)
-    species = "Canis familiaris"
-
-    # Initializer (Constructor)
-    def __init__(self, name, age):
-        self.name = name  # Instance Attribute
-        self.age = age    # Instance Attribute
-
-    # Instance Method
-    def bark(self):
-        return f"{self.name} says Woof!"
-
-    # String Representation (for print)
-    def __str__(self):
-        return f"{self.name} is {self.age} years old"
-```
-
-### Inheritance
-
-```
-# Inherits from Dog
-class Bulldog(Dog):
-    def sleep(self):
-        return f"{self.name} is sleeping."
-
-    # Overriding a method
-    def bark(self):
-        return "Woof woof! (in deep voice)"
-
-# Usage
-d = Dog("Buddy", 3)
-b = Bulldog("Rocky", 5)
-print(d.bark())  # Buddy says Woof!
-print(b.bark())  # Woof woof! (in deep voice)
-```
-
 ## 3. NumPy Cheat Sheet
 
 ### Import
