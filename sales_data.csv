@@ -1,0 +1,22 @@
+date,product_id,product_name,units_sold,price_per_unit
+2023-11-01,101,Classic Aviator,15,59.99
+2023-11-01,102,Retro Square,8,45.50
+2023-11-01,103,Blue Light Blocker,22,35.00
+2023-11-02,101,Classic Aviator,12,59.99
+2023-11-02,102,Retro Square,10,45.50
+2023-11-02,103,Blue Light Blocker,18,35.00
+2023-11-03,101,Classic Aviator,20,59.99
+2023-11-03,102,Retro Square,5,45.50
+2023-11-03,103,Blue Light Blocker,25,35.00
+2023-11-04,101,Classic Aviator,18,59.99
+2023-11-04,102,Retro Square,12,45.50
+2023-11-04,103,Blue Light Blocker,30,35.00
+2023-11-05,101,Classic Aviator,22,59.99
+2023-11-05,102,Retro Square,15,45.50
+2023-11-05,103,Blue Light Blocker,20,35.00
+2023-11-06,101,Classic Aviator,10,59.99
+2023-11-06,102,Retro Square,8,45.50
+2023-11-06,103,Blue Light Blocker,15,35.00
+2023-11-07,101,Classic Aviator,25,59.99
+2023-11-07,102,Retro Square,14,45.50
+2023-11-07,103,Blue Light Blocker,35,35.00
