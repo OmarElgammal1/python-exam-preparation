@@ -21,7 +21,7 @@ with open('data.txt', 'r') as f:
     content = f.read()       # Read entire file
     # lines = f.readlines()  # Read as list of lines
     # line = f.readline()    # Read single line
-```
+
 # Reading csv
 with open('employees.csv', mode='r') as file:
    reader = csv.reader(file)
@@ -30,6 +30,100 @@ with open('employees.csv', mode='r') as file:
    # Iterate through each row in the CSV
    for row in reader:
        print(f"Employee Name: {row[0]}, Department: {row[1]}")
+
+
+data = [
+    {'Name': 'Alice', 'Role': 'Dev', 'Salary': 90000},
+    {'Name': 'Bob', 'Role': 'Designer', 'Salary': 85000}
+]
+
+# Writing to a CSV using DictWriter
+with open('team.csv', mode='w', newline='') as file:
+    fieldnames = ['Name', 'Role', 'Salary']
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    
+    writer.writeheader()           # Writes the keys as the header row
+    for row in data:
+        writer.writerow(row)       # Writes each dictionary as a row
+    # writer.writerows(data)       # Alternative: write all rows at once
+
+# Reading from a CSV using DictReader
+with open('team.csv', mode='r') as file:
+    reader = csv.DictReader(file)  # Automatically uses the first row as keys
+    
+    for row in reader:
+        # Access elements by column name
+        print(f"Employee: {row['Name']}, Role: {row['Role']}")
+```
+
+## String manipulation
+```
+s = "  Hello Python  "
+
+# Basic Operations
+s.strip()                # Remove leading/trailing whitespace
+s.lower()                # Convert to lowercase
+s.upper()                # Convert to uppercase
+s.title()                # Capitalize first letter of each word
+s.replace("Python", "AI")# Replace substring
+
+# Splitting and Joining
+s.split(" ")             # Split into a list based on delimiter
+"-".join(['A', 'B', 'C'])# Join iterable with a separator (e.g., 'A-B-C')
+
+# Formatting & Slicing
+name = "Alice"
+age = 30
+f"Name: {name}, Age: {age}" # f-string interpolation
+s[2:7]                   # Slice characters from index 2 to 6
+s[::-1]                  # Reverse the string
+
+```
+
+## Dictionary Operations
+```
+d = {'name': 'Alice', 'role': 'Dev', 'level': 3}
+
+# Accessing and Modifying
+d['name']                # Access value (raises KeyError if missing)
+d.get('salary', 0)       # Safely access value (returns default if missing)
+d['salary'] = 90000      # Add or update a key-value pair
+
+# Dictionary Methods
+d.keys()                 # View object of all keys
+d.values()               # View object of all values
+d.items()                # View object of all (key, value) tuples
+d.update({'level': 4})   # Update multiple key-value pairs at once
+role = d.pop('role')     # Remove key and return its value
+del d['level']           # Delete key-value pair
+
+# Dictionary Comprehension
+squares = {x: x**2 for x in range(1, 6)} # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+```
+### Datetime handling
+```
+import datetime
+from datetime import timedelta
+
+# Current Date & Time
+now = datetime.datetime.now()         # Current date and time
+today = datetime.date.today()         # Current date only
+
+# Formatting (Datetime to String)
+# %Y: Year, %m: Month, %d: Day, %H: Hour (24hr), %M: Minute, %S: Second
+formatted_str = now.strftime("%Y-%m-%d %H:%M:%S")
+
+# Parsing (String to Datetime)
+date_str = "2023-10-31"
+parsed_date = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+
+# Timedeltas (Date Math)
+tomorrow = today + timedelta(days=1)  # Add 1 day
+last_week = now - timedelta(weeks=1)  # Subtract 1 week
+difference = tomorrow - today         # Returns a timedelta object
+
+```
 
 
 ## 3. NumPy Cheat Sheet
@@ -75,7 +169,8 @@ b.dtype             # Data type of array elements
 b.dtype.name        # Name of data type
 b.astype(int)       # Convert type
 ```
-Reshaping & Stacking
+### Reshaping & Stacking
+```
 a.reshape(4,1)                      # reshape
 a.flatten()                          # flatten to 1D
 np.ravel(a)                           # flatten (view if possible)
@@ -84,6 +179,7 @@ np.hstack([a,b])                      # stack arrays horizontally
 np.concatenate([a,b],axis=0)         # concatenate along axis
 np.repeat(a,2,axis=0)                 # repeat rows
 np.tile(a,(2,2))                      # tile array
+```
 
 ### Mathematics
 
@@ -180,7 +276,7 @@ np.hsplit(a, 3)     # Split horizontally at 3rd index
 np.vsplit(c, 2)     # Split vertically at 2nd index
 ```
 ### Miscellaneous
-
+```
 np.unique(a)                          # unique elements
 np.sort(a)                            # sort array
 np.argsort(a)                         # indices of sorted array
@@ -190,7 +286,7 @@ np.copy(a)                             # deep copy
 np.round(np.pi,3)                      # round number to 3 decimals
 np.clip(a,0,2)                         # limit values to [0,2]
 np.nan, np.isnan(a)                    # nan and check nan
-
+```
 
 ## 4. Matplotlib Cheat Sheet
 
