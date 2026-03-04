@@ -286,9 +286,8 @@ plt.close()                         # Close a window
 ### Subplots
 
 ```
-fig.add_subplot(2, 2, 1)            # Add subplot to grid
-fig, axes = plt.subplots(nrows=2, ncols=2) # Create grid of subplots
+fig, ax = plt.subplots(2,1,figsize = (10,8) )
 fig.subplots_adjust(wspace=0.5, hspace=0.3) # Adjust spacing
+ax[0].plot(hours,counts_arr,'k',label = 'Vehicle Volume')
+ax[0].axhline(y=100, color='r', linestyle='--', label='High Traffic')
 ```
-
-
