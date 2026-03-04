@@ -43,11 +43,19 @@ print(f"Read sales data: {read_sales}")
 # =====================================================================
 print("\n--- 2. Object-Oriented Programming ---")
 
+# --- Functions vs. Methods in OOP ---
+# 1. Standalone Function: Defined outside a class. Operates independently.
+def standalone_function():
+    print("I am a standalone function. I don't belong to any class.")
+
 class SalesReport:
     """
     A class to encapsulate sales data logic.
     Demonstrates classes, `__init__`, methods, and properties.
     """
+    # Class attribute (shared across all instances)
+    report_type = "Financial"
+
     def __init__(self, brand_name, sales_data):
         self.brand_name = brand_name
         self._sales_data = sales_data  # Protected attribute (encapsulation)
@@ -57,13 +65,44 @@ class SalesReport:
         """Calculate total sales using core Python syntax"""
         return sum(self._sales_data)
         
+    # 2. Member Method (Instance Method): 
+    # Takes 'self' as the first parameter.
+    # Operates on a specific instance of the class and can access instance attributes.
     def display_summary(self):
-        print(f"Brand: {self.brand_name}")
+        print(f"Brand: {self.brand_name} ({self.report_type})")
         print(f"Total Sales: {self.total_sales}")
         print(f"Average Sales: {self.total_sales / len(self._sales_data):.2f}")
 
+    # 3. Class Method:
+    # Takes 'cls' as the first parameter. 
+    # Operates on the class itself, not on instances. Often used as alternative constructors.
+    @classmethod
+    def change_report_type(cls, new_type):
+        cls.report_type = new_type
+        print(f"Report type changed to: {cls.report_type}")
+
+    # 4. Static Method:
+    # Doesn't take 'self' or 'cls'. 
+    # Behaves like a normal function but belongs to the class namespace. 
+    # Useful for utility functions that relate to the class but don't need its data.
+    @staticmethod
+    def is_valid_sales_data(data):
+        return isinstance(data, list) and all(isinstance(x, (int, float)) for x in data)
+
+# Demonstrating Functions vs Methods:
+print("\n[Functions vs Methods Demo]")
+standalone_function()  # Calling standalone
+
+# Calling member method
 report = SalesReport("LuxyLenz", read_sales)
 report.display_summary()
+
+# Calling class method
+SalesReport.change_report_type("Annual Financial")
+
+# Calling static method
+is_valid = SalesReport.is_valid_sales_data(read_sales)
+print(f"Is read_sales valid? {is_valid}")
 
 # =====================================================================
 # 3. NUMPY: FAST NUMERICAL OPERATIONS
